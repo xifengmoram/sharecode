@@ -3,48 +3,44 @@
   <view class="page__bd">
     <view class="weui-cell">
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="添加新任务" bindinput="typeNewTask" value="{{newTask}}"></input>
+        <input class="weui-input" placeholder='添加新任务' bindinput='typeNewTask' value="{{newTask}}"></input>
       </view>
 
-      <view class="weui-cell__ft">
-        <button class="weui-btn" type="primary" bindtap="addTask" disabled="{{newTask == ''}}">添加</button>
-      </view>
+      <view class="weui-cell__ft"><button class="weui-btn" type="primary" bindtap="addTask" disabled="{{newTask == ''}}">添加</button></view>
     </view>
 
     <view class="weui-cells__title">待办事项</view>
-    <view class="weui-cells weui-cells__after-title">
-      <radio-group>
-        <block wx:for="{{tasks}}" wx:key="value" wx:if="{{!item.status}}">
-          <label class="weui-cell weui-check__label" data-value="{{item.value}}" bindtap="changeTaskStatus">
-            <radio class="weui-check" value="{{item.value}}"></radio>
+    <view class="weui-cells weui-cells_after-title">
+        <radio-group>
+            <label class="weui-cell weui-check__label" wx:for="{{tasks}}" wx:key="{{item.value}}" wx:if="{{!item.status}}" data-value="{{item.value}}" bindtap="changeTaskStatus">
+                <checkbox class="weui-check" value="{{item.value}}"/>
 
-            <view class="weui-cell__hd weui-check__hd_in-checkbox">
-              <icon class="weui-icon-checkbox_circle" type="circle" size="23"></icon>
-            </view>
-            <view class="weui-cell__bd">{{item.content}}</view>
+                <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                    <icon class="weui-icon-checkbox_circle" type="circle" size="23"></icon>
+                </view>
 
-            <view class="weui-cell__ft"><button class="weui-btn" type="warn" data-value="{{item.value}}" catchtap="removeTask">删除</button></view>
-          </label>
-        </block>
-      </radio-group>
+                <view class="weui-cell__bd">{{item.content}}</view>
+
+                <view class="weui-cell__ft"><button class="weui-btn" type="warn" data-value="{{item.value}}" catchtap="removeTask">删除</button></view>
+            </label>
+        </radio-group>
     </view>
 
     <view class="weui-cells__title">完成事项</view>
-    <view class="weui-cells weui-cells__after-title">
-      <radio-group>
-        <block wx:for="{{tasks}}" wx:key="value" wx:if="{{item.status}}">
-          <label class="weui-cell weui-check__label" data-value="{{item.value}}" bindtap="changeTaskStatus">
-            <radio class="weui-check" value="{{item.value}}"></radio>
+    <view class="weui-cells weui-cells_after-title">
+        <radio-group>
+            <label class="weui-cell weui-check__label" wx:for="{{tasks}}" wx:key="{{item.value}}" wx:if="{{item.status}}" data-value="{{item.value}}" bindtap="changeTaskStatus">
+                <checkbox class="weui-check" value="{{item.value}}"/>
 
-            <view class="weui-cell__hd weui-check__hd_in-checkbox">
-              <icon class="weui-icon-checkbox_success" type="success" size="23"></icon>
-            </view>
-            <view class="weui-cell__bd">{{item.content}}</view>
+                <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                    <icon class="weui-icon-checkbox_success" type="success" size="23"></icon>
+                </view>
 
-            <view class="weui-cell__ft"><button class="weui-btn" type="warn" data-value="{{item.value}}" catchtap="removeTask">删除</button></view>
-          </label>
-        </block>
-      </radio-group>
+                <view class="weui-cell__bd">{{item.content}}</view>
+
+                <view class="weui-cell__ft"><button class="weui-btn" type="warn" data-value="{{item.value}}" catchtap="removeTask">删除</button></view>
+            </label>
+        </radio-group>
     </view>
   </view>
 </view>

@@ -7,7 +7,7 @@ Page({
   data: {
     tasks: [],
     newTask: '',
-    key: 0,
+    key: 0
   },
 
   changeTaskStatus: function(e) {
@@ -52,6 +52,7 @@ Page({
     let key = this.data.key;
 
     let newTaskObj = {content: this.data.newTask, value: key++, status: false};
+
     tasks.push(newTaskObj);
 
     this.setData({
